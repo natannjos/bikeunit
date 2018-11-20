@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BikeUnit</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/base.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-12 col-lg-12 col-md-offset-3 jumbotron">
+          <div class="text-center">
+            <h1>{% block header_text %}{% endblock %}</h1>
+            <form method="POST" action="{% block form_action %}{% endblock %}">
+              {{ form.destino }}
+              {% csrf_token %}
+              {% if form.errors %}
+              {% for error in form.destino.errors %}
+              <div class="form-group has-error alert alert-danger">
+                <div class="help-block">{{ error }}</div>
+              </div>
+              {% endfor %}
+              {% endif %}
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          {% block tabela %}
+          {% endblock %}
+        </div>
+      </div>
+
+    </div>
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/grupo.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        window.BikeUnit.inicializa()
+      })
+    </script>
+  </body>
+
+</html>

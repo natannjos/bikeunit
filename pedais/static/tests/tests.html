@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="./qunit-2.8.0.css">
+  <title>QUnit Example</title>
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture">
+    <form>
+      <input name="destino">
+      <div class="has-error"></div>
+    </form>
+  </div>
+
+
+  <script src="../js/jquery-3.3.1.min.js"></script>
+  <script src="../js/grupo.js"></script>
+  <script src="./qunit-2.8.0.js"></script>
+
+  <script>
+
+    QUnit.test('erros devem ficar escondidos no keypress', function (assert){
+      window.BikeUnit.inicializa()
+      $('input[name="destino"').trigger('keypress');
+      assert.equal($('.has-error').is(':visible'), false)
+    });
+    
+    QUnit.test('erros não devem ficar escondidos no keypress', function (assert){
+      window.BikeUnit.inicializa()
+      assert.equal($('.has-error').is(':visible'), true)
+    });
+
+  </script>
+</body>
+</html>

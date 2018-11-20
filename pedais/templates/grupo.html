@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block header_text %}Seus Pedais{% endblock header_text %}
+
+{% block form_action %}{% url 'view_grupo' grupo.id %}{% endblock form_action %}
+
+{% block tabela %}
+<table id="id_tabela_pedais" class="table">
+    {% for pedal in grupo.pedal_set.all %}
+    <tr>
+        <td>{{ forloop.counter }}: {{ pedal.destino }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock tabela %}
