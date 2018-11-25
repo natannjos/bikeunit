@@ -26,7 +26,10 @@ INSTALLED_APPS = [
 
     # Meus apps
     'pedais',
+    'contas',
 ]
+
+AUTH_USER_MODEL = 'contas.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
