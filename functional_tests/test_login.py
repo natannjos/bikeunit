@@ -5,7 +5,7 @@ import re
 from .base import FunctionalTest
 
 TEST_EMAIL = 'erlon@exemplo.com'
-ASSUNTO = 'Seu link de login para o Bikeunit'
+ASSUNTO = 'Seu link para login no BikeUnit'
 
 
 class LoginTest(FunctionalTest):
@@ -42,7 +42,7 @@ class LoginTest(FunctionalTest):
 
         # ele está logado
         self.espera_por(
-            lambda: self.browser.find_element_by_link_text('log out')
+            lambda: self.browser.find_element_by_link_text('Sair')
         )
         navbar = self.browser.find_element_by_css_selector('.navbar')
         self.assertIn(TEST_EMAIL, navbar.text)

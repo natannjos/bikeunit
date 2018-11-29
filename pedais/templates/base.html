@@ -16,12 +16,24 @@
       <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">BikeUnit</a>
-          <form class="navbar-form navbar-right" method="POST" action="{% url "envia_email_login" %}">
-            <span>Informe seu email para login:</span>
-            <input type="email" name="email" class="form-control">
-            {% csrf_token %}
-          </form>
-        </div>
+
+          
+          {% if user.email %}
+            <ul class="nav navbar-nav navbar-right">
+              <li class="navbar-text">Logado como {{ user.email }}</li>
+              <li><a href="#">Sair</a></li>
+            </ul>
+            {% else %}
+              <form class="navbar-form navbar-right"
+                    method="POST"
+                    action="{% url 'envia_email_login' %}">
+                  
+                <span>Informe o email para login</span>
+                <input class="form-control" name="email" type="email">
+                {% csrf_token %}
+              </form>
+          {% endif %}
+            
       </nav>
 
       
@@ -29,7 +41,7 @@
         <div class="row">
           <div class="col-md-8">
             
-            {% for messagem in messages %}
+            {% for message in messages %}
               
               {% if message.level_tag == 'success' %}
                 <div class="alert alert-success">{{ message }}</div>

@@ -1,6 +1,6 @@
 from django.shortcuts import redirect
 from django.core.mail import send_mail
-from django.contrib import messages
+from django.contrib import auth, messages
 from contas.models import Token
 from django.core.urlresolvers import reverse
 
@@ -18,7 +18,6 @@ def envia_email_login(request):
               'noreply@bikeunit.com', 
               [email]
     )
-
     messages.success(
         request,
         'Verifique seu email, te enviamos um link para que você possa acessar.'
@@ -26,4 +25,7 @@ def envia_email_login(request):
     return redirect('/')
 
 def login(request):
+    user = auth.authenticate(uid=request.GET.get('token'))
+    if user:
+        auth.login(request, user)
     return redirect('/')
