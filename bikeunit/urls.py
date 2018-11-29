@@ -20,4 +20,5 @@ from pedais import views
 urlpatterns = [
     url(r'^$', views.home_page, name='home'),
     url(r'^grupos/', include('pedais.urls')),
+    url(r'^contas/', include('contas.urls')),
 ]

@@ -16,13 +16,33 @@
       <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">BikeUnit</a>
-          <form class="navbar-form navbar-right" method="POST" action="#">
+          <form class="navbar-form navbar-right" method="POST" action="{% url "envia_email_login" %}">
             <span>Informe seu email para login:</span>
             <input type="email" name="email" class="form-control">
             {% csrf_token %}
           </form>
         </div>
       </nav>
+
+      
+      {% if messages %}
+        <div class="row">
+          <div class="col-md-8">
+            
+            {% for messagem in messages %}
+              
+              {% if message.level_tag == 'success' %}
+                <div class="alert alert-success">{{ message }}</div>
+              {% else %}
+                <div class="alert alert-warning">{{ message }}</div>
+              {% endif %}
+                
+            {% endfor %}
+              
+          </div>
+        </div>      
+      {% endif %}
+  
 
       <div class="row">
         <div class="col-md-12 col-lg-12 col-md-offset-3 jumbotron">

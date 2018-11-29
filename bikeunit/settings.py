@@ -30,6 +30,9 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'contas.User'
+AUTHENTICATION_BACKENDS = [
+    'contas.authentication.PasswordlessAuthenticationBackend',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

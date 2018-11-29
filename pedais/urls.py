@@ -19,5 +19,5 @@ from pedais import views
 
 urlpatterns = [
     url(r'^novo$', views.novo_grupo, name='novo_grupo'),
-    url(r'^(\d+)/$', views.view_grupo, name='view_grupo'),
+    url (r'^(\d+)/', views.view_grupo, name='view_grupo'),
 ]

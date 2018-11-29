@@ -4,3 +4,5 @@ selenium==3.141.0
 urllib3==1.24.1
 Django==1.11
 selenium==3.141.0
+.idea
+.vscode

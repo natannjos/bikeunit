@@ -14,7 +14,7 @@ class UserModelTest(TestCase):
     def test_email_eh_chave_primaria(self):
         user = User(email='a@b.com')
         self.assertEqual(user.pk, 'a@b.com')
-        
+
     def test_linca_usuario_com_uid_auto_gerado(self):
         token1 = Token.objects.create(email='a@b.com')
         token2 = Token.objects.create(email='a@b.com')
